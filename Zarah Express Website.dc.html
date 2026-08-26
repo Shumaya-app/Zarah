@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/classical-b0042e5a-7293-4725-9b8b-7b8a7a267925/styles.css">
+<script src="_ds/classical-b0042e5a-7293-4725-9b8b-7b8a7a267925/_ds_bundle.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap">
+<script src="./image-slot.js"></script>
+<style>
+  body { margin: 0; background: #dedad4; }
+  a { color: #8a6220; text-decoration: none; }
+  a:hover { color: #b68235; }
+  .zx-scroll::-webkit-scrollbar { width: 9px; }
+  .zx-scroll::-webkit-scrollbar-thumb { background: rgba(26,25,23,0.22); }
+</style>
+</helmet>
+
+<div style="padding: 40px 44px 64px; display: flex; flex-direction: column; gap: 28px; font-family: 'Lora', serif">
+
+  <div style="display: flex; align-items: flex-end; gap: 20px; flex-wrap: wrap">
+    <div>
+      <div style="font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase; color: #8a6220; margin-bottom: 8px">Hi-fi mockup — zarahexpress.com</div>
+      <div style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 38px; line-height: 1; color: #1a1917">Wireframe <a href="Zarah Express Website Wireframes.dc.html">1a</a>, taken to finish</div>
+    </div>
+    <div style="margin-left: auto; display: flex; gap: 8px; flex-wrap: wrap">
+      <button type="button" onClick="{{ navHome }}" style="font-family: 'Lora', serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 8px 13px; border: 1px solid rgba(26,25,23,0.28); background: transparent; color: #1a1917; cursor: pointer" style-hover="border-color: #b68235; color: #8a6220">Home</button>
+      <button type="button" onClick="{{ navServices }}" style="font-family: 'Lora', serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 8px 13px; border: 1px solid rgba(26,25,23,0.28); background: transparent; color: #1a1917; cursor: pointer" style-hover="border-color: #b68235; color: #8a6220">Services</button>
+      <button type="button" onClick="{{ navFleet }}" style="font-family: 'Lora', serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 8px 13px; border: 1px solid rgba(26,25,23,0.28); background: transparent; color: #1a1917; cursor: pointer" style-hover="border-color: #b68235; color: #8a6220">Fleet</button>
+      <button type="button" onClick="{{ navCorporate }}" style="font-family: 'Lora', serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 8px 13px; border: 1px solid rgba(26,25,23,0.28); background: transparent; color: #1a1917; cursor: pointer" style-hover="border-color: #b68235; color: #8a6220">Corporate</button>
+      <button type="button" onClick="{{ navBook }}" style="font-family: 'Lora', serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 8px 13px; border: 1px solid rgba(26,25,23,0.28); background: transparent; color: #1a1917; cursor: pointer" style-hover="border-color: #b68235; color: #8a6220">Request</button>
+      <button type="button" onClick="{{ navAbout }}" style="font-family: 'Lora', serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 8px 13px; border: 1px solid rgba(26,25,23,0.28); background: transparent; color: #1a1917; cursor: pointer" style-hover="border-color: #b68235; color: #8a6220">About</button>
+      <button type="button" onClick="{{ navContact }}" style="font-family: 'Lora', serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 8px 13px; border: 1px solid rgba(26,25,23,0.28); background: transparent; color: #1a1917; cursor: pointer" style-hover="border-color: #b68235; color: #8a6220">Contact</button>
+    </div>
+  </div>
+
+  <x-import component-from-global-scope="ChromeWindow" from="./browser-window.jsx" width="{{ W }}" height="{{ H }}" url="{{ url }}" tabs="{{ tabs }}" hint-size="1280px,860px">
+    <div class="zx-scroll" style="height: 100%; overflow-y: auto; background: #f6f4f1; color: #1a1917">
+
+      <div style="position: sticky; top: 0; z-index: 20; background: rgba(246,244,241,0.94); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(26,25,23,0.14)">
+        <div style="max-width: 1088px; margin: 0 auto; padding: 0 48px; height: 78px; display: flex; align-items: center; gap: 40px">
+          <div style="display: inline-flex; flex-direction: column; align-items: stretch">
+            <div style="height: 1px; background: #b68235; margin-bottom: 5px"></div>
+            <div style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 25px; line-height: 1; color: #1a1917">zarah express</div>
+            <div style="height: 1px; background: #b68235; margin-top: 5px"></div>
+          </div>
+          <div style="display: flex; gap: 26px; margin-left: auto; align-items: center">
+            <div onClick="{{ navServices }}" style="cursor: pointer; display: flex; flex-direction: column; gap: 5px"><span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #3d3a35">Services</span><span style="height: 1px; background: {{ uServices }}"></span></div>
+            <div onClick="{{ navFleet }}" style="cursor: pointer; display: flex; flex-direction: column; gap: 5px"><span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #3d3a35">Fleet</span><span style="height: 1px; background: {{ uFleet }}"></span></div>
+            <div onClick="{{ navCorporate }}" style="cursor: pointer; display: flex; flex-direction: column; gap: 5px"><span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #3d3a35">Corporate accounts</span><span style="height: 1px; background: {{ uCorporate }}"></span></div>
+            <div onClick="{{ navAbout }}" style="cursor: pointer; display: flex; flex-direction: column; gap: 5px"><span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #3d3a35">About</span><span style="height: 1px; background: {{ uAbout }}"></span></div>
+            <div onClick="{{ navContact }}" style="cursor: pointer; display: flex; flex-direction: column; gap: 5px"><span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #3d3a35">Contact</span><span style="height: 1px; background: {{ uContact }}"></span></div>
+            <div onClick="{{ navBook }}" style="cursor: pointer; border: 1px solid #b68235; padding: 10px 18px; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #8a6220" style-hover="background: rgba(182,130,53,0.08)">Request a car</div>
+          </div>
+        </div>
+      </div>
+
+      <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+      <div data-screen-label="Home">
+        <div style="position: relative; height: 620px">
+          <img src="assets/fleet-hotel.png" alt="The fleet at a five-star hotel entrance at night" style="width: 100%; height: 100%; object-fit: cover">
+          <div style="position: absolute; inset: 0; background: linear-gradient(100deg, rgba(15,14,13,0.94) 0%, rgba(15,14,13,0.72) 34%, rgba(15,14,13,0.12) 78%)"></div>
+          <div style="position: absolute; inset: 0; display: flex; align-items: center">
+            <div style="max-width: 1088px; margin: 0 auto; padding: 0 48px; width: 100%">
+              <div style="max-width: 560px; color: #f6f3ee">
+                <div style="font-size: 10.5px; letter-spacing: 0.3em; text-transform: uppercase; color: #c9a15a; margin-bottom: 22px">Chauffeured transport · Sandton, since 2016</div>
+                <h1 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 64px; line-height: 1.02; letter-spacing: -0.01em; margin: 0 0 24px; color: #f6f3ee">Arrive as though the day were always going to go this well.</h1>
+                <p style="font-size: 15.5px; line-height: 1.8; color: rgba(246,243,238,0.74); margin: 0 0 34px; max-width: 460px">Premium German cars. Chauffeurs who are trained, vetted and quiet. A control room that has already accounted for the traffic.</p>
+                <div style="display: flex; gap: 14px">
+                  <div onClick="{{ navBook }}" style="cursor: pointer; border: 1px solid #b68235; color: #e2c68f; padding: 15px 28px; font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase" style-hover="background: rgba(182,130,53,0.16)">Request a car</div>
+                  <div style="border: 1px solid rgba(246,243,238,0.3); color: rgba(246,243,238,0.85); padding: 15px 28px; font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer" style-hover="border-color: rgba(246,243,238,0.7)">WhatsApp us</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: #131211; color: #f6f3ee">
+          <div style="max-width: 1088px; margin: 0 auto; padding: 0 48px; display: grid; grid-template-columns: repeat(4, 1fr)">
+            <div style="padding: 34px 24px 34px 0; border-right: 1px solid rgba(246,243,238,0.14)"><div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; line-height: 1; color: #c9a15a; font-feature-settings: 'tnum'">2016</div><div style="font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(246,243,238,0.55); margin-top: 8px">Founded in Sandton</div></div>
+            <div style="padding: 34px 24px; border-right: 1px solid rgba(246,243,238,0.14)"><div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; line-height: 1; color: #c9a15a">Level 1</div><div style="font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(246,243,238,0.55); margin-top: 8px">B-BBEE contributor</div></div>
+            <div style="padding: 34px 24px; border-right: 1px solid rgba(246,243,238,0.14)"><div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; line-height: 1; color: #c9a15a">JSE-listed</div><div style="font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(246,243,238,0.55); margin-top: 8px">Clients on account</div></div>
+            <div style="padding: 34px 0 34px 24px"><div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; line-height: 1; color: #c9a15a; font-feature-settings: 'tnum'">24/7</div><div style="font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(246,243,238,0.55); margin-top: 8px">Dispatch, answered by a person</div></div>
+          </div>
+        </div>
+
+        <div style="max-width: 1088px; margin: 0 auto; padding: 88px 48px">
+          <div style="display: flex; align-items: flex-end; gap: 48px; margin-bottom: 44px">
+            <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 44px; line-height: 1.06; margin: 0; flex: 1">Three kinds of client.<br>One standard of care.</h2>
+            <p style="flex: 1; margin: 0; font-size: 14px; line-height: 1.85; color: #6b6660; text-align: justify">We keep our work narrow on purpose. Whoever is in the car, the vehicle is immaculate, the chauffeur is briefed, and the arrival is early.</p>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px">
+            <div style="border: 1px solid rgba(26,25,23,0.14); background: #fbfaf9">
+              <div style="height: 190px; overflow: hidden"><img src="assets/fleet-hotel.png" alt="Hotel arrival" style="width: 100%; height: 100%; object-fit: cover; filter: sepia(0.2) saturate(0.85) contrast(1.05)"></div>
+              <div style="padding: 26px 24px 28px">
+                <div style="font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase; color: #8a6220; margin-bottom: 10px">Hotels &amp; concierge</div>
+                <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 25px; margin: 0 0 12px">Guests who never wait</h3>
+                <p style="margin: 0; font-size: 13.5px; line-height: 1.8; color: #6b6660">A dedicated line for the desk, VIP arrivals met inside the terminal, and shuttles that run whether or not anyone is watching.</p>
+              </div>
+            </div>
+            <div style="border: 1px solid rgba(26,25,23,0.14); background: #fbfaf9">
+              <div style="height: 190px; overflow: hidden"><img src="assets/fleet-corporate.png" alt="Corporate head office" style="width: 100%; height: 100%; object-fit: cover; filter: sepia(0.2) saturate(0.85) contrast(1.05)"></div>
+              <div style="padding: 26px 24px 28px">
+                <div style="font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase; color: #8a6220; margin-bottom: 10px">Corporates</div>
+                <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 25px; margin: 0 0 12px">Days that run to the minute</h3>
+                <p style="margin: 0; font-size: 13.5px; line-height: 1.8; color: #6b6660">Roadshows, results weeks, visiting principals and daily staff runs — on one account, with one named manager behind it.</p>
+              </div>
+            </div>
+            <div style="border: 1px solid rgba(26,25,23,0.14); background: #fbfaf9">
+              <div style="height: 190px; overflow: hidden"><img src="assets/city-night.png" alt="Sedans at dusk" style="width: 100%; height: 100%; object-fit: cover; filter: sepia(0.2) saturate(0.85) contrast(1.05)"></div>
+              <div style="padding: 26px 24px 28px">
+                <div style="font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase; color: #8a6220; margin-bottom: 10px">Private clients</div>
+                <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 25px; margin: 0 0 12px">Known, not processed</h3>
+                <p style="margin: 0; font-size: 13.5px; line-height: 1.8; color: #6b6660">The same chauffeur where you prefer it, your route remembered, your privacy assumed rather than promised.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="border-top: 1px solid rgba(26,25,23,0.14); border-bottom: 1px solid rgba(26,25,23,0.14)">
+          <div style="max-width: 1088px; margin: 0 auto; padding: 76px 48px">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px">
+              <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 44px; line-height: 1.06; margin: 0">What we are asked for</h2>
+              <span onClick="{{ navServices }}" style="cursor: pointer; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #8a6220">All services →</span>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr">
+              <div style="padding: 28px 40px 28px 0; border-top: 1px solid rgba(26,25,23,0.14); border-right: 1px solid rgba(26,25,23,0.14); display: flex; gap: 20px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 15px; color: #b68235; padding-top: 6px; font-feature-settings: 'tnum'">i</span><div><h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 22px; margin: 0 0 8px">Airport transfers</h3><p style="margin: 0; font-size: 13.5px; line-height: 1.8; color: #6b6660">Flights monitored. Met inside the terminal. Luggage handled without a word.</p></div></div>
+              <div style="padding: 28px 0 28px 40px; border-top: 1px solid rgba(26,25,23,0.14); display: flex; gap: 20px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 15px; color: #b68235; padding-top: 6px; font-feature-settings: 'tnum'">ii</span><div><h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 22px; margin: 0 0 8px">Executive chauffeuring</h3><p style="margin: 0; font-size: 13.5px; line-height: 1.8; color: #6b6660">Half-day, full-day or at disposal. One car, one chauffeur, your whole day.</p></div></div>
+              <div style="padding: 28px 40px 28px 0; border-top: 1px solid rgba(26,25,23,0.14); border-right: 1px solid rgba(26,25,23,0.14); display: flex; gap: 20px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 15px; color: #b68235; padding-top: 6px; font-feature-settings: 'tnum'">iii</span><div><h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 22px; margin: 0 0 8px">Hotel &amp; guest transport</h3><p style="margin: 0; font-size: 13.5px; line-height: 1.8; color: #6b6660">Arrivals, in-city runs, staff shuttles — booked by the desk in one message.</p></div></div>
+              <div style="padding: 28px 0 28px 40px; border-top: 1px solid rgba(26,25,23,0.14); display: flex; gap: 20px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 15px; color: #b68235; padding-top: 6px; font-feature-settings: 'tnum'">iv</span><div><h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 22px; margin: 0 0 8px">Roadshows &amp; events</h3><p style="margin: 0; font-size: 13.5px; line-height: 1.8; color: #6b6660">Multi-car itineraries, one point of contact, no improvising on the day.</p></div></div>
+              <div style="padding: 28px 40px 28px 0; border-top: 1px solid rgba(26,25,23,0.14); border-right: 1px solid rgba(26,25,23,0.14); display: flex; gap: 20px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 15px; color: #b68235; padding-top: 6px; font-feature-settings: 'tnum'">v</span><div><h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 22px; margin: 0 0 8px">Staff &amp; group transport</h3><p style="margin: 0; font-size: 13.5px; line-height: 1.8; color: #6b6660">Scheduled runs in the V-Class, with the same vetting as our executive work.</p></div></div>
+              <div style="padding: 28px 0 28px 40px; border-top: 1px solid rgba(26,25,23,0.14); display: flex; gap: 20px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 15px; color: #b68235; padding-top: 6px; font-feature-settings: 'tnum'">vi</span><div><h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 22px; margin: 0 0 8px">Logistics support</h3><p style="margin: 0; font-size: 13.5px; line-height: 1.8; color: #6b6660">Time-critical documents and equipment, moved discreetly and signed for.</p></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="max-width: 1088px; margin: 0 auto; padding: 88px 48px; display: flex; gap: 56px; align-items: center">
+          <figure class="plate" style="flex: 1.25; height: 330px; overflow: hidden"><img src="assets/fleet-airport.png" alt="The fleet at the airport" style="width: 100%; height: 100%; object-fit: cover"></figure>
+          <div style="flex: 1">
+            <div style="font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase; color: #8a6220; margin-bottom: 16px">The fleet</div>
+            <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 40px; line-height: 1.08; margin: 0 0 18px">German cars, kept the way they were meant to be kept.</h2>
+            <p style="margin: 0 0 26px; font-size: 14.5px; line-height: 1.85; color: #6b6660">V-Class, 7 Series, X5, X3, C-Class and 3 Series. Comprehensively insured, serviced on schedule, valeted between engagements. Enough of them that a multi-car itinerary never needs a borrowed car.</p>
+            <div onClick="{{ navFleet }}" style="cursor: pointer; display: inline-block; border: 1px solid #b68235; color: #8a6220; padding: 14px 26px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase" style-hover="background: rgba(182,130,53,0.08)">See the fleet</div>
+          </div>
+        </div>
+
+        <div style="background: #131211; color: #f6f3ee">
+          <div style="max-width: 1088px; margin: 0 auto; padding: 84px 48px; display: flex; gap: 56px; align-items: flex-end">
+            <div style="flex: 1">
+              <div style="height: 1px; background: #b68235; width: 80px; margin-bottom: 26px"></div>
+              <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 44px; line-height: 1.06; margin: 0 0 16px">Tell us the day you are trying to run.</h2>
+              <p style="margin: 0; font-size: 14.5px; line-height: 1.85; color: rgba(246,243,238,0.7); max-width: 420px">Send an itinerary, or simply a date and a name. Confirmation in writing, within the hour.</p>
+            </div>
+            <div style="flex: 0.85">
+              <div style="display: flex; flex-direction: column; gap: 14px; width: 100%">
+                <div onClick="{{ navBook }}" style="cursor: pointer; border: 1px solid #b68235; color: #e2c68f; padding: 17px 28px; font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; text-align: center" style-hover="background: rgba(182,130,53,0.16)">Request a car</div>
+                <div style="cursor: pointer; border: 1px solid rgba(246,243,238,0.3); color: rgba(246,243,238,0.85); padding: 17px 28px; font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; text-align: center" style-hover="border-color: rgba(246,243,238,0.7)">WhatsApp +27 63 006 9377</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ isServices }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Services">
+        <div style="max-width: 1088px; margin: 0 auto; padding: 76px 48px 56px">
+          <div style="font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase; color: #8a6220; margin-bottom: 18px">Services</div>
+          <h1 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 56px; line-height: 1.04; margin: 0 0 22px; max-width: 720px">Six services. One standard.</h1>
+          <p style="margin: 0; max-width: 620px; font-size: 15px; line-height: 1.85; color: #6b6660">Everything is quoted, confirmed in writing and tracked to completion. Standing requirements move onto a corporate or hotel account.</p>
+        </div>
+
+        <div style="border-top: 1px solid rgba(26,25,23,0.14)">
+          <div style="max-width: 1088px; margin: 0 auto; padding: 0 48px">
+            <div style="display: flex; gap: 56px; align-items: center; padding: 56px 0; border-bottom: 1px solid rgba(26,25,23,0.14)">
+              <div style="flex: 1"><div style="font-family: 'Cormorant Garamond', serif; font-size: 14px; color: #b68235; letter-spacing: 0.2em; margin-bottom: 12px; font-feature-settings: 'tnum'">i</div><h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 34px; margin: 0 0 14px">Airport transfers</h2><p style="margin: 0 0 14px; font-size: 14.5px; line-height: 1.85; color: #6b6660">O.R. Tambo and Lanseria, day and night. We watch the flight, not the schedule you sent us — so a delay changes nothing on your end. Your guest is met inside the terminal with a name board, luggage is taken, and the car is already at the door.</p><div style="font-size: 12px; letter-spacing: 0.06em; color: #8a6220">Meet &amp; greet · flight monitoring · luggage assistance · 60 minutes free waiting</div></div>
+              <figure class="plate" style="flex: 1; height: 260px; overflow: hidden"><img src="assets/fleet-airport.png" alt="Airport arrival" style="width: 100%; height: 100%; object-fit: cover"></figure>
+            </div>
+            <div style="display: flex; gap: 56px; align-items: center; padding: 56px 0; border-bottom: 1px solid rgba(26,25,23,0.14)">
+              <figure class="plate" style="flex: 1; height: 260px; overflow: hidden"><img src="assets/executive.png" alt="An executive walking to the car" style="width: 100%; height: 100%; object-fit: cover; object-position: center 20%"></figure>
+              <div style="flex: 1"><div style="font-family: 'Cormorant Garamond', serif; font-size: 14px; color: #b68235; letter-spacing: 0.2em; margin-bottom: 12px; font-feature-settings: 'tnum'">ii</div><h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 34px; margin: 0 0 14px">Executive chauffeuring</h2><p style="margin: 0 0 14px; font-size: 14.5px; line-height: 1.85; color: #6b6660">A car and a chauffeur held for you — three hours, a full day, or as long as the visit lasts. Your chauffeur holds the itinerary, waits where you left him, and gets you to the next meeting before it starts.</p><div style="font-size: 12px; letter-spacing: 0.06em; color: #8a6220">Half-day · full-day · at disposal · multi-day visits</div></div>
+            </div>
+            <div style="display: flex; gap: 56px; align-items: center; padding: 56px 0; border-bottom: 1px solid rgba(26,25,23,0.14)">
+              <div style="flex: 1"><div style="font-family: 'Cormorant Garamond', serif; font-size: 14px; color: #b68235; letter-spacing: 0.2em; margin-bottom: 12px; font-feature-settings: 'tnum'">iii</div><h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 34px; margin: 0 0 14px">Hotel &amp; guest transport</h2><p style="margin: 0 0 14px; font-size: 14.5px; line-height: 1.85; color: #6b6660">A direct line for the concierge desk, answered by someone who already knows your property. VIP arrivals, in-city transport, guest and staff shuttles, and the discretion your guests assume they are paying for.</p><div style="font-size: 12px; letter-spacing: 0.06em; color: #8a6220">Concierge line · VIP arrivals · scheduled shuttles · luggage</div></div>
+              <figure class="plate" style="flex: 1; height: 260px; overflow: hidden"><img src="assets/chauffeur.png" alt="A chauffeur at the hotel entrance" style="width: 100%; height: 100%; object-fit: cover; object-position: center 25%"></figure>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; padding: 8px 0 72px">
+              <div style="padding: 44px 36px 0 0; border-right: 1px solid rgba(26,25,23,0.14)"><div style="font-family: 'Cormorant Garamond', serif; font-size: 14px; color: #b68235; letter-spacing: 0.2em; margin-bottom: 12px; font-feature-settings: 'tnum'">iv</div><h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 27px; margin: 0 0 12px">Roadshows &amp; events</h2><p style="margin: 0; font-size: 13.5px; line-height: 1.8; color: #6b6660">Multi-car programmes run to the minute, with one point of contact for the whole itinerary — results roadshows, conferences, delegations.</p></div>
+              <div style="padding: 44px 36px 0; border-right: 1px solid rgba(26,25,23,0.14)"><div style="font-family: 'Cormorant Garamond', serif; font-size: 14px; color: #b68235; letter-spacing: 0.2em; margin-bottom: 12px; font-feature-settings: 'tnum'">v</div><h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 27px; margin: 0 0 12px">Staff &amp; group transport</h2><p style="margin: 0; font-size: 13.5px; line-height: 1.8; color: #6b6660">Scheduled runs and site visits in the V-Class. Same vehicles, same vetting, same punctuality as the executive work.</p></div>
+              <div style="padding: 44px 0 0 36px"><div style="font-family: 'Cormorant Garamond', serif; font-size: 14px; color: #b68235; letter-spacing: 0.2em; margin-bottom: 12px; font-feature-settings: 'tnum'">vi</div><h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 27px; margin: 0 0 12px">Logistics support</h2><p style="margin: 0; font-size: 13.5px; line-height: 1.8; color: #6b6660">Time-critical documents, equipment and sensitive parcels — collected, tracked and signed for.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: #131211; color: #f6f3ee">
+          <div style="max-width: 1088px; margin: 0 auto; padding: 64px 48px; display: flex; align-items: center; gap: 48px">
+            <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 34px; margin: 0; flex: 1">Executive travel, handled with precision.</h2>
+            <div onClick="{{ navBook }}" style="cursor: pointer; border: 1px solid #b68235; color: #e2c68f; padding: 16px 30px; font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase" style-hover="background: rgba(182,130,53,0.16)">Request a car</div>
+          </div>
+        </div>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ isFleet }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Fleet">
+        <div style="max-width: 1088px; margin: 0 auto; padding: 76px 48px 44px; display: flex; align-items: flex-end; gap: 48px">
+          <div style="flex: 1"><div style="font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase; color: #8a6220; margin-bottom: 18px">The fleet</div><h1 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 56px; line-height: 1.04; margin: 0">Six cars to choose between. None of them a compromise.</h1></div>
+          <p style="flex: 0.8; margin: 0; font-size: 14.5px; line-height: 1.85; color: #6b6660; text-align: justify">Tell us the party size and the luggage and we will put the right car on it. If you would rather not think about it, ask us to advise.</p>
+        </div>
+        <div style="max-width: 1088px; margin: 0 auto; padding: 0 48px 64px">
+          <figure class="plate" style="height: 300px; overflow: hidden; margin-bottom: 56px"><img src="assets/fleet-hotel.png" alt="The fleet at a hotel entrance" style="width: 100%; height: 100%; object-fit: cover"></figure>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px">
+            <div style="border: 1px solid rgba(26,25,23,0.14); background: #fbfaf9"><div style="height: 170px; overflow: hidden"><img src="assets/car-vclass.png" alt="Mercedes-Benz V-Class" style="width: 100%; height: 100%; object-fit: cover"></div><div style="padding: 22px 22px 24px"><h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 23px; margin: 0 0 8px">Mercedes-Benz V-Class</h3><p style="margin: 0 0 14px; font-size: 13px; line-height: 1.75; color: #6b6660">Groups, delegations and luggage-heavy airport runs, in individual seats.</p><div style="border-top: 1px solid rgba(26,25,23,0.14); padding-top: 12px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #8a6220; font-feature-settings: 'tnum'">6–7 passengers</div></div></div>
+            <div style="border: 1px solid rgba(26,25,23,0.14); background: #fbfaf9"><div style="height: 170px; overflow: hidden"><img src="assets/car-7series.png" alt="BMW 7 Series" style="width: 100%; height: 100%; object-fit: cover"></div><div style="padding: 22px 22px 24px"><h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 23px; margin: 0 0 8px">BMW 7 Series</h3><p style="margin: 0 0 14px; font-size: 13px; line-height: 1.75; color: #6b6660">Principals, board-level and diplomatic travel. The quietest car we run.</p><div style="border-top: 1px solid rgba(26,25,23,0.14); padding-top: 12px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #8a6220; font-feature-settings: 'tnum'">3 passengers</div></div></div>
+            <div style="border: 1px solid rgba(26,25,23,0.14); background: #fbfaf9"><div style="height: 170px; position: relative"><image-slot id="zx-fleet-x5" shape="rect" fit="cover" placeholder="Drop an X5 photo"></image-slot></div><div style="padding: 22px 22px 24px"><h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 23px; margin: 0 0 8px">BMW X5</h3><p style="margin: 0 0 14px; font-size: 13px; line-height: 1.75; color: #6b6660">Executive comfort with height and presence — and room for real luggage.</p><div style="border-top: 1px solid rgba(26,25,23,0.14); padding-top: 12px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #8a6220; font-feature-settings: 'tnum'">4 passengers</div></div></div>
+            <div style="border: 1px solid rgba(26,25,23,0.14); background: #fbfaf9"><div style="height: 170px; overflow: hidden"><img src="assets/car-x3.png" alt="BMW X3" style="width: 100%; height: 100%; object-fit: cover"></div><div style="padding: 22px 22px 24px"><h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 23px; margin: 0 0 8px">BMW X3</h3><p style="margin: 0 0 14px; font-size: 13px; line-height: 1.75; color: #6b6660">City work and hotel transfers — two guests with luggage, comfortably.</p><div style="border-top: 1px solid rgba(26,25,23,0.14); padding-top: 12px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #8a6220; font-feature-settings: 'tnum'">4 passengers</div></div></div>
+            <div style="border: 1px solid rgba(26,25,23,0.14); background: #fbfaf9"><div style="height: 170px; position: relative"><image-slot id="zx-fleet-cclass" shape="rect" fit="cover" placeholder="Drop a C-Class photo"></image-slot></div><div style="padding: 22px 22px 24px"><h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 23px; margin: 0 0 8px">Mercedes-Benz C-Class</h3><p style="margin: 0 0 14px; font-size: 13px; line-height: 1.75; color: #6b6660">Single-executive point-to-point, without announcing itself.</p><div style="border-top: 1px solid rgba(26,25,23,0.14); padding-top: 12px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #8a6220; font-feature-settings: 'tnum'">3 passengers</div></div></div>
+            <div style="border: 1px solid rgba(26,25,23,0.14); background: #fbfaf9"><div style="height: 170px; overflow: hidden"><img src="assets/car-3series.png" alt="BMW 3 Series" style="width: 100%; height: 100%; object-fit: cover"></div><div style="padding: 22px 22px 24px"><h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 23px; margin: 0 0 8px">BMW 3 Series</h3><p style="margin: 0 0 14px; font-size: 13px; line-height: 1.75; color: #6b6660">Meetings, appointments and the daily corporate run.</p><div style="border-top: 1px solid rgba(26,25,23,0.14); padding-top: 12px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #8a6220; font-feature-settings: 'tnum'">3 passengers</div></div></div>
+          </div>
+        </div>
+        <div style="border-top: 1px solid rgba(26,25,23,0.14)">
+          <div style="max-width: 1088px; margin: 0 auto; padding: 56px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 56px">
+            <p style="margin: 0; font-size: 14px; line-height: 1.85; color: #6b6660; text-align: justify">Every vehicle is comprehensively insured, serviced on schedule and valeted between engagements. Water, charging and Wi-Fi on request. We do not publish fleet numbers — there is always another car.</p>
+            <p style="margin: 0; padding-left: 56px; border-left: 1px solid rgba(26,25,23,0.14); font-size: 14px; line-height: 1.85; color: #6b6660; text-align: justify">Chauffeurs hold PrDPs, are background-checked and defensive-driving trained, and are briefed on your itinerary before the day begins. Uniform is standard; conversation is optional.</p>
+          </div>
+        </div>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ isCorporate }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Corporate accounts">
+        <div style="background: #131211; color: #f6f3ee">
+          <div style="max-width: 1088px; margin: 0 auto; padding: 84px 48px; display: flex; gap: 56px; align-items: flex-end">
+            <div style="flex: 1"><div style="font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase; color: #c9a15a; margin-bottom: 18px">Corporate &amp; hotel accounts</div><h1 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 54px; line-height: 1.04; margin: 0">One account. One manager. One invoice.</h1></div>
+            <p style="flex: 0.85; margin: 0; font-size: 14.5px; line-height: 1.85; color: rgba(246,243,238,0.72)">Built for procurement teams and concierge desks that need transport to be a line item, not a daily negotiation.</p>
+          </div>
+          <div style="max-width: 1088px; margin: 0 auto; padding: 0 48px 76px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px">
+            <div style="border: 1px solid rgba(246,243,238,0.18); padding: 28px 24px"><div style="font-family: 'Cormorant Garamond', serif; font-size: 26px; color: #c9a15a; margin-bottom: 10px">Level 1 B-BBEE</div><p style="margin: 0; font-size: 13.5px; line-height: 1.8; color: rgba(246,243,238,0.7)">Full procurement recognition on your scorecard, certificate on file.</p></div>
+            <div style="border: 1px solid rgba(246,243,238,0.18); padding: 28px 24px"><div style="font-family: 'Cormorant Garamond', serif; font-size: 26px; color: #c9a15a; margin-bottom: 10px">Consolidated billing</div><p style="margin: 0; font-size: 13.5px; line-height: 1.8; color: rgba(246,243,238,0.7)">One monthly invoice, 30-day terms, no per-trip card payments.</p></div>
+            <div style="border: 1px solid rgba(246,243,238,0.18); padding: 28px 24px"><div style="font-family: 'Cormorant Garamond', serif; font-size: 26px; color: #c9a15a; margin-bottom: 10px">Cost-centre reporting</div><p style="margin: 0; font-size: 13.5px; line-height: 1.8; color: rgba(246,243,238,0.7)">Every trip attributed to a division, project or guest folio.</p></div>
+          </div>
+        </div>
+        <div style="max-width: 1088px; margin: 0 auto; padding: 76px 48px">
+          <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 40px; margin: 0 0 40px">How an account works</h2>
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(26,25,23,0.14)">
+            <div style="padding: 30px 28px 30px 0; border-right: 1px solid rgba(26,25,23,0.14)"><div style="font-family: 'Cormorant Garamond', serif; font-size: 32px; color: #b68235; margin-bottom: 12px; font-feature-settings: 'tnum'">01</div><h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 20px; margin: 0 0 8px">A conversation</h3><p style="margin: 0; font-size: 13px; line-height: 1.8; color: #6b6660">We learn your patterns — routes, hours, who books, who must never be kept waiting.</p></div>
+            <div style="padding: 30px 28px; border-right: 1px solid rgba(26,25,23,0.14)"><div style="font-family: 'Cormorant Garamond', serif; font-size: 32px; color: #b68235; margin-bottom: 12px; font-feature-settings: 'tnum'">02</div><h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 20px; margin: 0 0 8px">A rate card</h3><p style="margin: 0; font-size: 13px; line-height: 1.8; color: #6b6660">Fixed rates for your standing routes, hourly rates for the rest. In writing, no surprises.</p></div>
+            <div style="padding: 30px 28px; border-right: 1px solid rgba(26,25,23,0.14)"><div style="font-family: 'Cormorant Garamond', serif; font-size: 32px; color: #b68235; margin-bottom: 12px; font-feature-settings: 'tnum'">03</div><h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 20px; margin: 0 0 8px">A named manager</h3><p style="margin: 0; font-size: 13px; line-height: 1.8; color: #6b6660">One number, one email, one person who already knows the brief.</p></div>
+            <div style="padding: 30px 0 30px 28px"><div style="font-family: 'Cormorant Garamond', serif; font-size: 32px; color: #b68235; margin-bottom: 12px; font-feature-settings: 'tnum'">04</div><h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 20px; margin: 0 0 8px">Monthly review</h3><p style="margin: 0; font-size: 13px; line-height: 1.8; color: #6b6660">Invoice, trip report and a check that the standard held.</p></div>
+          </div>
+        </div>
+        <div style="border-top: 1px solid rgba(26,25,23,0.14); border-bottom: 1px solid rgba(26,25,23,0.14)">
+          <div style="max-width: 1088px; margin: 0 auto; padding: 0 48px; display: grid; grid-template-columns: 1fr 1fr">
+            <div style="padding: 64px 56px 64px 0; border-right: 1px solid rgba(26,25,23,0.14)">
+              <div style="font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: #8a6220; margin-bottom: 14px">For hotels</div>
+              <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 30px; margin: 0 0 14px">Your desk, our line</h3>
+              <p style="margin: 0 0 18px; font-size: 14px; line-height: 1.85; color: #6b6660">A direct number for the concierge, standing shuttle schedules, VIP arrivals met inside the terminal, and billing that can go to the folio or to the property.</p>
+              <div style="font-size: 12.5px; line-height: 2; color: #3d3a35">Guest transfers · executive transport · group &amp; event · luggage assistance · 24/7</div>
+            </div>
+            <div style="padding: 64px 0 64px 56px">
+              <div style="font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: #8a6220; margin-bottom: 14px">For corporates</div>
+              <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 30px; margin: 0 0 14px">Head office to gate</h3>
+              <p style="margin: 0 0 18px; font-size: 14px; line-height: 1.85; color: #6b6660">Airport runs, visiting principals, results roadshows, daily staff transport and time-critical logistics — all on one account, all reportable.</p>
+              <div style="font-size: 12.5px; line-height: 2; color: #3d3a35">Airport transfers · executive transfers · roadshows &amp; events · staff transport · logistics</div>
+            </div>
+          </div>
+        </div>
+        <div style="max-width: 1088px; margin: 0 auto; padding: 64px 48px; display: flex; gap: 48px; align-items: center">
+          <div style="flex: 1"><h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 26px; margin: 0 0 10px">Documents on request</h3><p style="margin: 0; font-size: 13.5px; line-height: 1.8; color: #6b6660">B-BBEE certificate · tax clearance · company registration · insurance schedule · full company profile (PDF)</p></div>
+          <div onClick="{{ navBook }}" style="cursor: pointer; border: 1px solid #b68235; color: #8a6220; padding: 16px 30px; font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase" style-hover="background: rgba(182,130,53,0.08)">Open an account</div>
+        </div>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ isBook }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Request a car">
+        <div style="max-width: 1088px; margin: 0 auto; padding: 76px 48px 40px">
+          <div style="font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase; color: #8a6220; margin-bottom: 18px">Request a car</div>
+          <h1 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 54px; line-height: 1.04; margin: 0 0 18px; max-width: 700px">Tell us the day you are trying to run.</h1>
+          <p style="margin: 0; max-width: 600px; font-size: 15px; line-height: 1.85; color: #6b6660">Nothing is paid online. We confirm vehicle, chauffeur and timings in writing, usually within the hour.</p>
+        </div>
+        <div style="max-width: 1088px; margin: 0 auto; padding: 0 48px 76px; display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: start">
+          <div style="border: 1px solid rgba(26,25,23,0.14); background: #fbfaf9; padding: 36px 34px">
+            <div style="font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: #8a6220; margin-bottom: 22px">The journey</div>
+            <div style="display: flex; flex-direction: column; gap: 18px">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px">
+                <label style="display: flex; flex-direction: column; gap: 7px"><span style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #6b6660">Pickup</span><input class="input" type="text" placeholder="Address or hotel"></label>
+                <label style="display: flex; flex-direction: column; gap: 7px"><span style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #6b6660">Drop-off</span><input class="input" type="text" placeholder="Address or airport"></label>
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px">
+                <label style="display: flex; flex-direction: column; gap: 7px"><span style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #6b6660">Date</span><input class="input" type="date"></label>
+                <label style="display: flex; flex-direction: column; gap: 7px"><span style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #6b6660">Time</span><input class="input" type="time"></label>
+                <label style="display: flex; flex-direction: column; gap: 7px"><span style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #6b6660">Passengers</span><input class="input" type="number" placeholder="2"></label>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 9px">
+                <span style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #6b6660">Vehicle</span>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap">
+                  <div style="border: 1px solid rgba(26,25,23,0.22); padding: 11px 18px; font-size: 12.5px; cursor: pointer" style-hover="border-color: #b68235; color: #8a6220">Sedan</div>
+                  <div style="border: 1px solid rgba(26,25,23,0.22); padding: 11px 18px; font-size: 12.5px; cursor: pointer" style-hover="border-color: #b68235; color: #8a6220">SUV</div>
+                  <div style="border: 1px solid rgba(26,25,23,0.22); padding: 11px 18px; font-size: 12.5px; cursor: pointer" style-hover="border-color: #b68235; color: #8a6220">V-Class</div>
+                  <div style="border: 1px solid #b68235; background: rgba(182,130,53,0.08); color: #8a6220; padding: 11px 18px; font-size: 12.5px; cursor: pointer">Advise me</div>
+                </div>
+              </div>
+              <div style="height: 1px; background: rgba(26,25,23,0.14); margin: 4px 0"></div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px">
+                <label style="display: flex; flex-direction: column; gap: 7px"><span style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #6b6660">Name</span><input class="input" type="text" placeholder="Your name"></label>
+                <label style="display: flex; flex-direction: column; gap: 7px"><span style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #6b6660">Company or hotel</span><input class="input" type="text" placeholder="Optional"></label>
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px">
+                <label style="display: flex; flex-direction: column; gap: 7px"><span style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #6b6660">Email</span><input class="input" type="email" placeholder="you@company.co.za"></label>
+                <label style="display: flex; flex-direction: column; gap: 7px"><span style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #6b6660">Mobile</span><input class="input" type="tel" placeholder="+27"></label>
+              </div>
+              <label style="display: flex; flex-direction: column; gap: 7px"><span style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #6b6660">Anything we should know</span><textarea class="input" rows="3" placeholder="Flight number, guest name, cost centre, return leg"></textarea></label>
+              <div style="display: flex; gap: 14px; align-items: center; margin-top: 4px">
+                <div style="border: 1px solid #b68235; color: #8a6220; padding: 15px 30px; font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer" style-hover="background: rgba(182,130,53,0.08)">Send request</div>
+                <span style="font-size: 12px; color: #6b6660">No payment now. Confirmation in writing.</span>
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 26px">
+            <div style="background: #131211; color: #f6f3ee; padding: 34px 30px">
+              <div style="font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: #c9a15a; margin-bottom: 14px">Rather just ask?</div>
+              <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 30px; line-height: 1.15; margin: 0 0 14px">WhatsApp is answered day and night, by a person.</h3>
+              <div style="font-family: 'Cormorant Garamond', serif; font-size: 26px; color: #e2c68f; margin-bottom: 18px; font-feature-settings: 'tnum'">+27 63 006 9377</div>
+              <div style="border: 1px solid #b68235; color: #e2c68f; padding: 14px 24px; font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; text-align: center; cursor: pointer" style-hover="background: rgba(182,130,53,0.16)">Open WhatsApp</div>
+            </div>
+            <div style="border: 1px solid rgba(26,25,23,0.14); padding: 28px 26px">
+              <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 22px; margin: 0 0 12px">What happens next</h3>
+              <div style="display: flex; flex-direction: column; gap: 12px; font-size: 13.5px; line-height: 1.75; color: #6b6660">
+                <div style="display: flex; gap: 12px"><span style="color: #b68235; font-feature-settings: 'tnum'">01</span><span>We confirm the car, the chauffeur's name and the timings by email.</span></div>
+                <div style="display: flex; gap: 12px"><span style="color: #b68235; font-feature-settings: 'tnum'">02</span><span>You get the chauffeur's mobile the day before.</span></div>
+                <div style="display: flex; gap: 12px"><span style="color: #b68235; font-feature-settings: 'tnum'">03</span><span>The car arrives fifteen minutes early. It always does.</span></div>
+              </div>
+            </div>
+            <div style="border-top: 1px solid rgba(26,25,23,0.14); padding-top: 22px">
+              <p style="margin: 0 0 14px; font-size: 13.5px; line-height: 1.8; color: #6b6660">Standing requirement, several cars a week, or invoicing through procurement?</p>
+              <span onClick="{{ navCorporate }}" style="cursor: pointer; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #8a6220">Corporate &amp; hotel accounts →</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="About">
+        <div style="max-width: 1088px; margin: 0 auto; padding: 76px 48px 56px; display: flex; gap: 56px; align-items: flex-end">
+          <div style="flex: 1.15"><div style="font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase; color: #8a6220; margin-bottom: 18px">About</div><h1 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 54px; line-height: 1.04; margin: 0">A quiet standard, held since 2016.</h1></div>
+          <figure class="plate" style="flex: 0.85; height: 280px; overflow: hidden"><img src="assets/executive.png" alt="An executive walking to a waiting car" style="width: 100%; height: 100%; object-fit: cover; object-position: center 20%"></figure>
+        </div>
+        <div style="max-width: 1088px; margin: 0 auto; padding: 0 48px 64px">
+          <div style="column-count: 2; column-gap: 56px; font-size: 14.5px; line-height: 1.9; text-align: justify; hyphens: auto; color: #3d3a35">
+            <p style="margin: 0 0 18px">Zarah Express was founded in Sandton in 2016 to answer a narrow question well: how does a guest, an executive or a delegation move through a city without ever having to think about it?</p>
+            <p style="margin: 0 0 18px">The answer has never been complicated. Premium German vehicles, kept immaculate. Chauffeurs who are trained, vetted, discreet and impeccably presented. A control room that knows where every car is and where it needs to be next. And a habit of arriving early, so nobody else has to hurry.</p>
+            <p style="margin: 0 0 18px">Ten years on we serve five-star hotels and their concierge desks, JSE-listed corporates, event and roadshow producers, and private clients who value being known rather than processed. We are a Level 1 B-BBEE contributor, based at the corner of Sloane and Main in Bryanston — minutes from the country's densest concentration of head offices, and a clean run to O.R. Tambo.</p>
+            <p style="margin: 0">We are not a shuttle company. Our clients do not book a seat; they engage a service.</p>
+          </div>
+        </div>
+        <div style="border-top: 1px solid rgba(26,25,23,0.14); border-bottom: 1px solid rgba(26,25,23,0.14)">
+          <div style="max-width: 1088px; margin: 0 auto; padding: 64px 48px">
+            <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 38px; margin: 0 0 36px">What we hold ourselves to</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0">
+              <div style="padding: 26px 44px 26px 0; border-right: 1px solid rgba(26,25,23,0.14); border-bottom: 1px solid rgba(26,25,23,0.14)"><h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 21px; margin: 0 0 8px">Discretion as policy</h3><p style="margin: 0; font-size: 13.5px; line-height: 1.8; color: #6b6660">Chauffeurs sign confidentiality undertakings. What is said in the car, and who was in it, stays there.</p></div>
+              <div style="padding: 26px 0 26px 44px; border-bottom: 1px solid rgba(26,25,23,0.14)"><h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 21px; margin: 0 0 8px">Early, not on time</h3><p style="margin: 0; font-size: 13.5px; line-height: 1.8; color: #6b6660">Fifteen minutes is the standard. Punctuality is the only luxury that cannot be bought back.</p></div>
+              <div style="padding: 26px 44px 26px 0; border-right: 1px solid rgba(26,25,23,0.14)"><h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 21px; margin: 0 0 8px">One point of contact</h3><p style="margin: 0; font-size: 13.5px; line-height: 1.8; color: #6b6660">No call centre. A named person who already knows your account and your preferences.</p></div>
+              <div style="padding: 26px 0 26px 44px"><h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 21px; margin: 0 0 8px">Accountable to procurement</h3><p style="margin: 0; font-size: 13.5px; line-height: 1.8; color: #6b6660">Level 1 B-BBEE, consolidated invoicing and per-trip reporting that stands up to an audit.</p></div>
+            </div>
+          </div>
+        </div>
+        <div style="position: relative; height: 300px">
+          <img src="assets/chauffeur.png" alt="A chauffeur waiting at the hotel entrance" style="width: 100%; height: 100%; object-fit: cover; object-position: center 25%">
+          <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(15,14,13,0.86), rgba(15,14,13,0.1) 70%)"></div>
+          <div style="position: absolute; inset: 0; display: flex; align-items: center"><div style="max-width: 1088px; margin: 0 auto; padding: 0 48px; width: 100%"><div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 34px; line-height: 1.3; color: #f6f3ee; max-width: 520px">&ldquo;On time, every time — so you are always ready for what comes next.&rdquo;</div></div></div>
+        </div>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Contact">
+        <div style="max-width: 1088px; margin: 0 auto; padding: 76px 48px 44px">
+          <div style="font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase; color: #8a6220; margin-bottom: 18px">Contact</div>
+          <h1 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 54px; line-height: 1.04; margin: 0; max-width: 660px">Bryanston, Sandton — and wherever the day takes you.</h1>
+        </div>
+        <div style="max-width: 1088px; margin: 0 auto; padding: 0 48px 64px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: start">
+          <div style="display: flex; flex-direction: column">
+            <div style="padding: 26px 0; border-top: 1px solid rgba(26,25,23,0.14)"><div style="font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #6b6660; margin-bottom: 8px">WhatsApp &amp; calls</div><div style="font-family: 'Cormorant Garamond', serif; font-size: 28px; font-feature-settings: 'tnum'">+27 63 006 9377</div><div style="font-size: 12.5px; color: #6b6660; margin-top: 4px">24 hours, answered by a person</div></div>
+            <div style="padding: 26px 0; border-top: 1px solid rgba(26,25,23,0.14)"><div style="font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #6b6660; margin-bottom: 8px">Email</div><div style="font-family: 'Cormorant Garamond', serif; font-size: 24px">bookings@zarahexpress.com</div><div style="font-size: 12.5px; color: #6b6660; margin-top: 4px">accounts@zarahexpress.com for procurement</div></div>
+            <div style="padding: 26px 0; border-top: 1px solid rgba(26,25,23,0.14); border-bottom: 1px solid rgba(26,25,23,0.14)"><div style="font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #6b6660; margin-bottom: 8px">Offices</div><div style="font-size: 15px; line-height: 1.8">Corner Sloane &amp; Main Road<br>Bryanston, Sandton, 2191<br>Gauteng, South Africa</div></div>
+            <div style="padding-top: 26px"><div style="font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #6b6660; margin-bottom: 10px">Also serving</div><div style="font-size: 13.5px; line-height: 1.9; color: #3d3a35">O.R. Tambo · Lanseria · Rosebank · Midrand · Pretoria · Fourways, and long-distance on request</div></div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 32px">
+            <div style="height: 300px; border: 6px solid #eae9e9; outline: 1px solid rgba(26,25,23,0.14); position: relative"><image-slot id="zx-contact-map" shape="rect" fit="cover" placeholder="Drop a map of Sloane &amp; Main, Bryanston"></image-slot></div>
+            <div style="border: 1px solid rgba(26,25,23,0.14); background: #fbfaf9; padding: 30px 28px">
+              <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 24px; margin: 0 0 18px">Send a note</h3>
+              <div style="display: flex; flex-direction: column; gap: 16px">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px">
+                  <input class="input" type="text" placeholder="Name">
+                  <input class="input" type="email" placeholder="Email">
+                </div>
+                <textarea class="input" rows="3" placeholder="How can we help?"></textarea>
+                <div style="border: 1px solid #b68235; color: #8a6220; padding: 14px 28px; font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; align-self: flex-start" style-hover="background: rgba(182,130,53,0.08)">Send</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </sc-if>
+
+      <div style="background: #0f0e0d; color: rgba(246,243,238,0.72)">
+        <div style="max-width: 1088px; margin: 0 auto; padding: 56px 48px 40px; display: flex; gap: 56px; align-items: flex-start">
+          <div style="flex: 1.2">
+            <div style="display: inline-flex; flex-direction: column; align-items: stretch; margin-bottom: 18px">
+              <div style="height: 1px; background: #b68235; margin-bottom: 6px"></div>
+              <div style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 26px; line-height: 1; color: #f6f3ee">zarah express</div>
+              <div style="height: 1px; background: #b68235; margin-top: 6px"></div>
+            </div>
+            <p style="margin: 0; font-size: 13px; line-height: 1.8; max-width: 300px">Premium transport. Exceptional service. Founded in Sandton, 2016. Level 1 B-BBEE contributor.</p>
+          </div>
+          <div style="flex: 1; display: flex; flex-direction: column; gap: 9px"><div style="font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #c9a15a; margin-bottom: 6px">Services</div><span style="font-size: 13px">Airport transfers</span><span style="font-size: 13px">Executive chauffeuring</span><span style="font-size: 13px">Hotel &amp; guest transport</span><span style="font-size: 13px">Roadshows &amp; events</span><span style="font-size: 13px">Staff transport</span><span style="font-size: 13px">Logistics support</span></div>
+          <div style="flex: 1; display: flex; flex-direction: column; gap: 9px"><div style="font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #c9a15a; margin-bottom: 6px">Company</div><span onClick="{{ navAbout }}" style="font-size: 13px; cursor: pointer">About</span><span onClick="{{ navFleet }}" style="font-size: 13px; cursor: pointer">Fleet</span><span onClick="{{ navCorporate }}" style="font-size: 13px; cursor: pointer">Corporate accounts</span><span onClick="{{ navContact }}" style="font-size: 13px; cursor: pointer">Contact</span></div>
+          <div style="flex: 1.1; display: flex; flex-direction: column; gap: 9px"><div style="font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #c9a15a; margin-bottom: 6px">Reach us</div><span style="font-size: 13px; font-feature-settings: 'tnum'">+27 63 006 9377</span><span style="font-size: 13px">bookings@zarahexpress.com</span><span style="font-size: 13px; line-height: 1.7">Corner Sloane &amp; Main Road,<br>Bryanston, Sandton, 2191</span></div>
+        </div>
+        <div style="max-width: 1088px; margin: 0 auto; padding: 0 48px 34px"><div style="border-top: 1px solid rgba(246,243,238,0.14); padding-top: 20px; display: flex; justify-content: space-between; font-size: 11px; letter-spacing: 0.1em; color: rgba(246,243,238,0.45)"><span>© 2026 Zarah Express. All rights reserved.</span><span>Professional drivers · Premium vehicles · Punctual &amp; reliable · Discreet &amp; secure</span></div></div>
+      </div>
+
+    </div>
+  </x-import>
+
+  <div style="display: flex; align-items: flex-end; gap: 20px; margin-top: 20px">
+    <div>
+      <div style="font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase; color: #8a6220; margin-bottom: 8px">Mobile</div>
+      <div style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 32px; line-height: 1; color: #1a1917">Home, and the request sheet</div>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 48px; flex-wrap: wrap">
+    <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="393px,852px">
+      <div style="height: 100%; overflow: hidden; background: #f6f4f1; color: #1a1917; font-family: 'Lora', serif; display: flex; flex-direction: column">
+        <div style="height: 54px; flex: none"></div>
+        <div style="display: flex; align-items: center; padding: 14px 20px; border-bottom: 1px solid rgba(26,25,23,0.14)">
+          <div style="display: inline-flex; flex-direction: column; align-items: stretch"><div style="height: 1px; background: #b68235; margin-bottom: 4px"></div><div style="font-family: 'Cormorant Garamond', serif; font-size: 19px; line-height: 1">zarah express</div><div style="height: 1px; background: #b68235; margin-top: 4px"></div></div>
+          <div style="margin-left: auto; display: flex; flex-direction: column; gap: 4px"><span style="width: 20px; height: 1px; background: #1a1917"></span><span style="width: 20px; height: 1px; background: #1a1917"></span><span style="width: 14px; height: 1px; background: #1a1917"></span></div>
+        </div>
+        <div style="flex: 1; overflow: hidden; display: flex; flex-direction: column">
+          <div style="position: relative; height: 300px">
+            <img src="assets/fleet-hotel.png" alt="Hotel arrival" style="width: 100%; height: 100%; object-fit: cover; object-position: 30% center">
+            <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,14,13,0.96) 14%, rgba(15,14,13,0.68) 52%, rgba(15,14,13,0.28))"></div>
+            <div style="position: absolute; left: 20px; right: 20px; bottom: 22px; color: #f6f3ee">
+              <div style="font-size: 8.5px; letter-spacing: 0.24em; text-transform: uppercase; color: #c9a15a; margin-bottom: 10px">Sandton · since 2016</div>
+              <div style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 34px; line-height: 1.06">Arrive as though the day were always going to go this well.</div>
+            </div>
+          </div>
+          <div style="padding: 20px; display: flex; flex-direction: column; gap: 12px">
+            <p style="margin: 0; font-size: 13px; line-height: 1.75; color: #6b6660">Premium German cars. Chauffeurs who are trained, vetted and quiet.</p>
+            <div style="border: 1px solid #b68235; color: #8a6220; padding: 15px; text-align: center; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase">Request a car</div>
+            <div style="border: 1px solid rgba(26,25,23,0.22); color: #3d3a35; padding: 15px; text-align: center; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase">WhatsApp us</div>
+          </div>
+          <div style="background: #131211; color: #f6f3ee; padding: 18px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px">
+            <div><div style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #c9a15a; font-feature-settings: 'tnum'">2016</div><div style="font-size: 8.5px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(246,243,238,0.55); margin-top: 4px">Founded</div></div>
+            <div><div style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #c9a15a">Level 1</div><div style="font-size: 8.5px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(246,243,238,0.55); margin-top: 4px">B-BBEE</div></div>
+          </div>
+          <div style="padding: 18px 20px; display: flex; flex-direction: column; gap: 12px">
+            <div style="font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: #8a6220">What we are asked for</div>
+            <div style="display: flex; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid rgba(26,25,23,0.14)"><span style="font-family: 'Cormorant Garamond', serif; font-size: 17px">Airport transfers</span><span style="color: #b68235">→</span></div>
+            <div style="display: flex; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid rgba(26,25,23,0.14)"><span style="font-family: 'Cormorant Garamond', serif; font-size: 17px">Executive chauffeuring</span><span style="color: #b68235">→</span></div>
+          </div>
+        </div>
+        <div style="border-top: 1px solid rgba(26,25,23,0.14); background: rgba(246,244,241,0.96); padding: 12px 20px 18px; display: flex; gap: 10px">
+          <div style="flex: 1; border: 1px solid rgba(26,25,23,0.22); color: #3d3a35; padding: 12px; text-align: center; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase">Call</div>
+          <div style="flex: 1; border: 1px solid rgba(26,25,23,0.22); color: #3d3a35; padding: 12px; text-align: center; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase">WhatsApp</div>
+          <div style="flex: 1.4; border: 1px solid #b68235; background: rgba(182,130,53,0.08); color: #8a6220; padding: 12px; text-align: center; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase">Request</div>
+        </div>
+      </div>
+    </x-import>
+
+    <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="393px,852px">
+      <div style="height: 100%; position: relative; background: #f6f4f1; font-family: 'Lora', serif; overflow: hidden">
+        <div style="position: absolute; inset: 0"><img src="assets/city-night.png" alt="Cars at dusk" style="width: 100%; height: 100%; object-fit: cover"><div style="position: absolute; inset: 0; background: rgba(15,14,13,0.62)"></div></div>
+        <div style="position: absolute; left: 0; right: 0; bottom: 0; background: #f6f4f1; border-top: 1px solid rgba(26,25,23,0.14); padding: 18px 20px 26px; display: flex; flex-direction: column; gap: 14px">
+          <div style="width: 42px; height: 3px; border-radius: 2px; background: rgba(26,25,23,0.2); align-self: center"></div>
+          <div><div style="font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: #8a6220; margin-bottom: 6px">Request a car</div><div style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 27px; line-height: 1.1">Tell us the day you are trying to run.</div></div>
+          <div style="display: flex; flex-direction: column; gap: 10px">
+            <input class="input" type="text" placeholder="Pickup">
+            <input class="input" type="text" placeholder="Drop-off">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px"><input class="input" type="text" placeholder="Date"><input class="input" type="text" placeholder="Time"></div>
+            <div style="display: flex; gap: 8px"><div style="flex: 1; border: 1px solid rgba(26,25,23,0.22); padding: 11px; text-align: center; font-size: 11px">Sedan</div><div style="flex: 1; border: 1px solid rgba(26,25,23,0.22); padding: 11px; text-align: center; font-size: 11px">SUV</div><div style="flex: 1; border: 1px solid #b68235; background: rgba(182,130,53,0.08); color: #8a6220; padding: 11px; text-align: center; font-size: 11px">V-Class</div></div>
+            <input class="input" type="text" placeholder="Name">
+            <input class="input" type="tel" placeholder="Mobile">
+          </div>
+          <div style="border: 1px solid #b68235; color: #8a6220; padding: 15px; text-align: center; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase">Send request</div>
+          <div style="text-align: center; font-size: 11px; color: #6b6660">or WhatsApp +27 63 006 9377</div>
+        </div>
+      </div>
+    </x-import>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:1100}}">
+class Component extends DCLogic {
+  state = { page: 'home' };
+  go(p) { return () => this.setState({ page: p }); }
+  renderVals() {
+    const p = this.state.page;
+    const u = (k) => (p === k ? '#b68235' : 'transparent');
+    const urls = { home: 'zarahexpress.com', services: 'zarahexpress.com/services', fleet: 'zarahexpress.com/fleet', corporate: 'zarahexpress.com/corporate-accounts', book: 'zarahexpress.com/request', about: 'zarahexpress.com/about', contact: 'zarahexpress.com/contact' };
+    return {
+      W: 1280, H: 880,
+      url: urls[p] || urls.home,
+      tabs: [{ title: 'Zarah Express — Premium transport. Exceptional service.' }],
+      isHome: p === 'home', isServices: p === 'services', isFleet: p === 'fleet',
+      isCorporate: p === 'corporate', isBook: p === 'book', isAbout: p === 'about', isContact: p === 'contact',
+      uServices: u('services'), uFleet: u('fleet'), uCorporate: u('corporate'), uAbout: u('about'), uContact: u('contact'),
+      navHome: this.go('home'), navServices: this.go('services'), navFleet: this.go('fleet'),
+      navCorporate: this.go('corporate'), navBook: this.go('book'), navAbout: this.go('about'), navContact: this.go('contact'),
+    };
+  }
+}
+</script>
+</body>
+</html>
