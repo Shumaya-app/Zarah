@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SW3S09NJ57"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-SW3S09NJ57');
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Control room | Zarah Express</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0d0c0b">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500&family=Lora:wght@400;600&display=swap">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #f7f6f3; color: #171614; font-family: 'Lora', Georgia, serif; }
+  a { color: #8a6220; text-decoration: none; }
+  input, select, button { font-family: inherit; font-size: 14px; }
+  input, select { padding: 12px; border: 1px solid #d8d3ca; border-radius: 5px; background: #fff; width: 100%; min-width: 0; max-width: 100%; }
+  input:focus, select:focus { outline: none; border-color: #b68235; }
+  .lbl { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #8a6220; }
+  .card { background: #fff; border: 1px solid #e6e2db; border-radius: 5px; }
+  .btn { padding: 14px 28px; background: #0d0c0b; color: #e2c68f; border: 1px solid #0d0c0b; border-radius: 5px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: background .3s ease, color .3s ease; }
+  .btn:hover { background: #b68235; color: #0d0c0b; border-color: #b68235; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #8a6220; font-weight: 400; padding: 12px 14px; border-bottom: 1px solid #e6e2db; white-space: nowrap; }
+  td { padding: 13px 14px; border-bottom: 1px solid #f0ede7; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  .scroll { overflow-x: auto; }
+  .cal { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+  .day { background: #fff; border: 1px solid #eeebe5; border-radius: 4px; min-height: 78px; padding: 7px 8px; font-size: 11px; }
+  .day.out { background: #faf8f4; }
+  .pill { display: block; background: #0d0c0b; color: #e2c68f; border-radius: 3px; padding: 3px 6px; margin-top: 4px; font-size: 9.5px; letter-spacing: 0.04em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .tab { padding: 15px 4px; margin-right: 26px; cursor: pointer; font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: #9a948c; border-bottom: 2px solid transparent; white-space: nowrap; }
+  .tab.on { color: #8a6220; border-bottom-color: #b68235; }
+</style>
+</head>
+<body>
+
+<header style="background: #0d0c0b; color: #f4f1ec">
+  <div class="wrap" style="min-height: 76px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap">
+    <a href="/" style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 24px; color: #f4f1ec">Zarah Express</a>
+    <span style="font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: #c9a15a">Control room</span>
+    <span id="who" style="margin-left: auto; font-size: 12px; color: rgba(244,241,236,0.55)"></span>
+  </div>
+</header>
+
+<!-- gate -->
+<main id="gate" class="wrap" style="padding-top: 70px; padding-bottom: 70px; max-width: 520px">
+  <div style="font-size: 10.5px; letter-spacing: 0.28em; text-transform: uppercase; color: #8a6220; margin-bottom: 14px">Staff only</div>
+  <h1 style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(30px, 7vw, 42px); margin: 0 0 12px">Sign in</h1>
+  <p style="font-size: 14px; line-height: 1.75; color: #6f6a63; margin: 0 0 30px">Paste the control sheet address and your passphrase. Both are remembered on this device only.</p>
+  <div style="display: grid; gap: 18px">
+    <label><span class="lbl" style="display: block; margin-bottom: 8px">Sheet web app URL</span><input id="url" type="url" placeholder="https://script.google.com/macros/s/.../exec"></label>
+    <label><span class="lbl" style="display: block; margin-bottom: 8px">Passphrase</span><input id="key" type="password" placeholder="From the script"></label>
+    <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap">
+      <button class="btn" id="go">Open</button>
+      <span id="err" style="font-size: 13px; color: #a3402c"></span>
+    </div>
+  </div>
+</main>
+
+<!-- dashboard -->
+<main id="app" class="wrap" style="display: none; padding-bottom: 80px">
+  <div style="display: flex; border-bottom: 1px solid #e6e2db; overflow-x: auto; margin-bottom: 30px">
+    <div class="tab on" data-t="cal">Calendar</div>
+    <div class="tab" data-t="book">Enquiries</div>
+    <div class="tab" data-t="cust">Customers</div>
+    <div class="tab" data-t="fleet">Fleet</div>
+  </div>
+
+  <section id="p-cal">
+    <div style="display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; margin-bottom: 20px">
+      <h2 id="calTitle" style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 32px; margin: 0"></h2>
+      <div style="margin-left: auto; display: flex; gap: 10px">
+        <button class="btn" id="prev" style="padding: 11px 18px">Back</button>
+        <button class="btn" id="next" style="padding: 11px 18px">Forward</button>
+      </div>
+    </div>
+    <div class="cal" id="dow" style="margin-bottom: 4px"></div>
+    <div class="cal" id="grid"></div>
+    <p style="font-size: 12.5px; color: #8f8a83; margin-top: 16px">Each block is a vehicle out on the day. Built from the pick-up and return dates on every enquiry.</p>
+  </section>
+
+  <section id="p-book" style="display: none">
+    <div class="card scroll"><table id="tBook"></table></div>
+  </section>
+
+  <section id="p-cust" style="display: none">
+    <div class="card scroll"><table id="tCust"></table></div>
+  </section>
+
+  <section id="p-fleet" style="display: none">
+    <div class="card scroll"><table id="tFleet"></table></div>
+    <p style="font-size: 12.5px; color: #8f8a83; margin-top: 16px">Change these in the Fleet tab of the sheet. The site follows within a minute.</p>
+  </section>
+</main>
+
+<script>
+var S = { url: '', key: '', data: null, month: new Date() };
+var $ = function (id) { return document.getElementById(id); };
+
+function esc(v) { return String(v == null ? '' : v).replace(/[&<>"]/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]; }); }
+function money(n) { var x = Number(n); return isFinite(x) && x ? 'R' + Math.round(x).toLocaleString('en-US').split(',').join('\u00a0') : ''; }
+function ymd(d) { return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+
+/* --- session --- */
+try {
+  S.url = localStorage.getItem('zx_admin_url') || '';
+  S.key = localStorage.getItem('zx_admin_key') || '';
+} catch (e) {}
+if (S.url) $('url').value = S.url;
+if (S.key) $('key').value = S.key;
+if (S.url && S.key) load();
+
+$('go').onclick = function () {
+  S.url = $('url').value.trim();
+  S.key = $('key').value.trim();
+  if (!S.url || !S.key) { $('err').textContent = 'Both fields are needed.'; return; }
+  load();
+};
+
+function load() {
+  $('err').textContent = 'Loading…';
+  var u = S.url + (S.url.indexOf('?') < 0 ? '?' : '&') + 'action=bookings&key=' + encodeURIComponent(S.key);
+  fetch(u).then(function (r) { return r.json(); }).then(function (d) {
+    if (!d || d.error) { $('err').textContent = d && d.error === 'unauthorised' ? 'Passphrase not accepted.' : 'Could not read the sheet.'; return; }
+    try { localStorage.setItem('zx_admin_url', S.url); localStorage.setItem('zx_admin_key', S.key); } catch (e) {}
+    S.data = d;
+    $('gate').style.display = 'none';
+    $('app').style.display = 'block';
+    $('who').textContent = (d.bookings || []).length + ' enquiries · ' + (d.customers || []).length + ' customers';
+    render();
+  }).catch(function () { $('err').textContent = 'Could not reach the sheet. Check the URL and that the web app is shared with Anyone.'; });
+}
+
+/* --- tabs --- */
+[].forEach.call(document.querySelectorAll('.tab'), function (t) {
+  t.onclick = function () {
+    [].forEach.call(document.querySelectorAll('.tab'), function (x) { x.classList.remove('on'); });
+    t.classList.add('on');
+    ['cal', 'book', 'cust', 'fleet'].forEach(function (k) { $('p-' + k).style.display = (k === t.dataset.t ? 'block' : 'none'); });
+  };
+});
+
+$('prev').onclick = function () { S.month = new Date(S.month.getFullYear(), S.month.getMonth() - 1, 1); calendar(); };
+$('next').onclick = function () { S.month = new Date(S.month.getFullYear(), S.month.getMonth() + 1, 1); calendar(); };
+
+function render() { calendar(); tables(); }
+
+/* --- calendar --- */
+function calendar() {
+  var d = S.data || {}, books = d.bookings || [];
+  var y = S.month.getFullYear(), m = S.month.getMonth();
+  $('calTitle').textContent = S.month.toLocaleDateString('en-ZA', { month: 'long', year: 'numeric' });
+
+  $('dow').innerHTML = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map(function (n) {
+    return '<div class="lbl" style="padding: 6px 8px">' + n + '</div>';
+  }).join('');
+
+  var first = new Date(y, m, 1);
+  var lead = (first.getDay() + 6) % 7;
+  var total = new Date(y, m + 1, 0).getDate();
+  var cells = [];
+  for (var i = 0; i < lead; i++) cells.push('<div></div>');
+
+  for (var day = 1; day <= total; day++) {
+    var cur = new Date(y, m, day), key = ymd(cur);
+    var on = books.filter(function (b) {
+      if (!b.dateOut) return false;
+      var a = String(b.dateOut).slice(0, 10);
+      var z = String(b.dateIn || b.dateOut).slice(0, 10);
+      return key >= a && key <= z;
+    });
+    cells.push('<div class="day' + (on.length ? ' out' : '') + '">' +
+      '<div style="color:#9a948c">' + day + '</div>' +
+      on.slice(0, 3).map(function (b) { return '<span class="pill" title="' + esc(b.name) + '">' + esc(b.vehicle || b.kind) + '</span>'; }).join('') +
+      (on.length > 3 ? '<div style="margin-top:4px;color:#8a6220;font-size:9.5px">+' + (on.length - 3) + ' more</div>' : '') +
+      '</div>');
+  }
+  $('grid').innerHTML = cells.join('');
+}
+
+/* --- tables --- */
+function table(el, cols, rows, cell) {
+  if (!rows.length) { el.innerHTML = '<tr><td style="color:#8f8a83">Nothing yet.</td></tr>'; return; }
+  el.innerHTML = '<thead><tr>' + cols.map(function (c) { return '<th>' + c + '</th>'; }).join('') + '</tr></thead><tbody>' +
+    rows.map(function (r) { return '<tr>' + cell(r).map(function (v) { return '<td>' + v + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody>';
+}
+
+function tables() {
+  var d = S.data || {};
+  var books = (d.bookings || []).slice().reverse();
+
+  table($('tBook'), ['Received', 'Type', 'Name', 'Mobile', 'Vehicle', 'Dates', 'Estimate'], books, function (b) {
+    return [
+      esc(String(b.received || '').slice(0, 10)),
+      esc(b.kind),
+      esc(b.name),
+      b.phone ? '<a href="https://wa.me/' + esc(String(b.phone).replace(/\D/g, '')) + '" target="_blank" rel="noopener">' + esc(b.phone) + '</a>' : '',
+      esc(b.vehicle || b.journey),
+      esc(String(b.dateOut || '').slice(0, 10)) + (b.dateIn ? ' → ' + esc(String(b.dateIn).slice(0, 10)) : ''),
+      money(b.total)
+    ];
+  });
+
+  table($('tCust'), ['Mobile', 'Name', 'First seen', 'Last seen', 'Enquiries'], (d.customers || []).slice().reverse(), function (c) {
+    return [
+      c.phone ? '<a href="https://wa.me/' + esc(String(c.phone).replace(/\D/g, '')) + '" target="_blank" rel="noopener">' + esc(c.phone) + '</a>' : '',
+      esc(c.name),
+      esc(String(c.firstSeen || '').slice(0, 10)),
+      esc(String(c.lastSeen || '').slice(0, 10)),
+      esc(c.enquiries)
+    ];
+  });
+
+  table($('tFleet'), ['Vehicle', 'Status', 'Day rate', 'Deposit'], d.fleet || [], function (r) {
+    var up = r.available !== false;
+    return [
+      esc(r.name || r.id),
+      '<span style="color:' + (up ? '#3f6b45' : '#a3402c') + '">' + (up ? 'Available' : 'Out on rental') + '</span>',
+      money(r.day),
+      money(r.deposit)
+    ];
+  });
+}
+</script>
+</body>
+</html>
