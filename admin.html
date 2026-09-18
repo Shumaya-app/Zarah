@@ -36,6 +36,13 @@
   .day { background: #fff; border: 1px solid #eeebe5; border-radius: 4px; min-height: 78px; padding: 7px 8px; font-size: 11px; }
   .day.out { background: #faf8f4; }
   .pill { display: block; background: #0d0c0b; color: #e2c68f; border-radius: 3px; padding: 3px 6px; margin-top: 4px; font-size: 9.5px; letter-spacing: 0.04em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .pill.tent { background: #fff; color: #8a6220; border: 1px dashed #d8cbb0; }
+  .chip { padding: 9px 15px; border: 1px solid #e6e2db; border-radius: 999px; background: #fff; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #6f6a63; cursor: pointer; white-space: nowrap; }
+  .chip.on { background: #0d0c0b; border-color: #0d0c0b; color: #e2c68f; }
+  .st { width: auto; min-width: 128px; padding: 8px 10px; font-size: 12px; }
+  .tog { padding: 8px 14px; border: 1px solid #d8d3ca; border-radius: 5px; background: #fff; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; white-space: nowrap; }
+  .tog:hover { border-color: #b68235; }
+  .sav { font-size: 11px; color: #3f6b45; margin-left: 8px; }
   .tab { padding: 15px 4px; margin-right: 26px; cursor: pointer; font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: #9a948c; border-bottom: 2px solid transparent; white-space: nowrap; }
   .tab.on { color: #8a6220; border-bottom-color: #b68235; }
 </style>
@@ -69,7 +76,7 @@
 <main id="app" class="wrap" style="display: none; padding-bottom: 80px">
   <div style="display: flex; border-bottom: 1px solid #e6e2db; overflow-x: auto; margin-bottom: 30px">
     <div class="tab on" data-t="cal">Calendar</div>
-    <div class="tab" data-t="book">Enquiries</div>
+    <div class="tab" data-t="book">Bookings</div>
     <div class="tab" data-t="cust">Customers</div>
     <div class="tab" data-t="fleet">Fleet</div>
   </div>
@@ -84,11 +91,13 @@
     </div>
     <div class="cal" id="dow" style="margin-bottom: 4px"></div>
     <div class="cal" id="grid"></div>
-    <p style="font-size: 12.5px; color: #8f8a83; margin-top: 16px">Each block is a vehicle out on the day. Built from the pick-up and return dates on every enquiry.</p>
+    <p style="font-size: 12.5px; color: #8f8a83; margin-top: 16px">Solid blocks are confirmed rentals. Dashed blocks are enquiries not yet confirmed. Cancelled and no-show bookings are left out.</p>
   </section>
 
   <section id="p-book" style="display: none">
+    <div id="filters" style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px"></div>
     <div class="card scroll"><table id="tBook"></table></div>
+    <p style="font-size: 12.5px; color: #8f8a83; margin-top: 16px">Set the status here and it writes straight to the sheet. Confirmed bookings block their dates on the calendar; cancelled ones release them.</p>
   </section>
 
   <section id="p-cust" style="display: none">
@@ -97,17 +106,30 @@
 
   <section id="p-fleet" style="display: none">
     <div class="card scroll"><table id="tFleet"></table></div>
-    <p style="font-size: 12.5px; color: #8f8a83; margin-top: 16px">Change these in the Fleet tab of the sheet. The site follows within a minute.</p>
+    <p style="font-size: 12.5px; color: #8f8a83; margin-top: 16px">Availability is switched here and written to the sheet. Rates and fixed deposits are still edited in the Fleet tab. Deposits are worked out from the day rate unless you fill in the deposit column, which pins that car to one figure.</p>
   </section>
 </main>
 
 <script>
-var S = { url: '', key: '', data: null, month: new Date() };
+var S = { url: '', key: '', data: null, month: new Date(), filter: 'live' };
+var STATUSES = ['enquiry', 'confirmed', 'cancelled', 'completed', 'no-show'];
+var BLOCKING = ['confirmed', 'completed'];
 var $ = function (id) { return document.getElementById(id); };
 
 function esc(v) { return String(v == null ? '' : v).replace(/[&<>"]/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]; }); }
 function money(n) { var x = Number(n); return isFinite(x) && x ? 'R' + Math.round(x).toLocaleString('en-US').split(',').join('\u00a0') : ''; }
+function depositTier(day) { var d = Number(day) || 0; return d <= 3500 ? 5000 : d <= 5000 ? 6500 : d <= 6500 ? 8000 : d <= 10000 ? 12000 : 20000; }
 function ymd(d) { return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+function stat(b) { return String(b.status || 'enquiry').toLowerCase().trim(); }
+
+/* Writes go back through the same web app, with the passphrase. */
+function post(body, done) {
+  body.key = S.key;
+  fetch(S.url, { method: 'POST', body: JSON.stringify(body) })
+    .then(function (r) { return r.json(); })
+    .then(function (d) { done(d && !d.error ? null : (d && d.error) || 'failed'); })
+    .catch(function () { done('offline'); });
+}
 
 /* --- session --- */
 try {
@@ -134,7 +156,9 @@ function load() {
     S.data = d;
     $('gate').style.display = 'none';
     $('app').style.display = 'block';
-    $('who').textContent = (d.bookings || []).length + ' enquiries · ' + (d.customers || []).length + ' customers';
+    $('who').textContent = (d.bookings || []).filter(function (b) { return BLOCKING.indexOf(stat(b)) >= 0; }).length +
+      ' confirmed · ' + (d.bookings || []).filter(function (b) { return stat(b) === 'enquiry'; }).length +
+      ' open · ' + (d.customers || []).length + ' customers';
     render();
   }).catch(function () { $('err').textContent = 'Could not reach the sheet. Check the URL and that the web app is shared with Anyone.'; });
 }
@@ -173,13 +197,19 @@ function calendar() {
     var cur = new Date(y, m, day), key = ymd(cur);
     var on = books.filter(function (b) {
       if (!b.dateOut) return false;
+      var st = stat(b);
+      if (st === 'cancelled' || st === 'no-show') return false;
       var a = String(b.dateOut).slice(0, 10);
       var z = String(b.dateIn || b.dateOut).slice(0, 10);
       return key >= a && key <= z;
     });
-    cells.push('<div class="day' + (on.length ? ' out' : '') + '">' +
+    var firm = on.filter(function (b) { return BLOCKING.indexOf(stat(b)) >= 0; });
+    cells.push('<div class="day' + (firm.length ? ' out' : '') + '">' +
       '<div style="color:#9a948c">' + day + '</div>' +
-      on.slice(0, 3).map(function (b) { return '<span class="pill" title="' + esc(b.name) + '">' + esc(b.vehicle || b.kind) + '</span>'; }).join('') +
+      on.slice(0, 3).map(function (b) {
+        var t = BLOCKING.indexOf(stat(b)) >= 0 ? 'pill' : 'pill tent';
+        return '<span class="' + t + '" title="' + esc(b.name) + ' · ' + esc(stat(b)) + '">' + esc(b.vehicle || b.kind) + '</span>';
+      }).join('') +
       (on.length > 3 ? '<div style="margin-top:4px;color:#8a6220;font-size:9.5px">+' + (on.length - 3) + ' more</div>' : '') +
       '</div>');
   }
@@ -193,12 +223,65 @@ function table(el, cols, rows, cell) {
     rows.map(function (r) { return '<tr>' + cell(r).map(function (v) { return '<td>' + v + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody>';
 }
 
+var FILTERS = [
+  { id: 'live', label: 'Open & confirmed', test: function (s) { return s === 'enquiry' || s === 'confirmed'; } },
+  { id: 'enquiry', label: 'Enquiries', test: function (s) { return s === 'enquiry'; } },
+  { id: 'confirmed', label: 'Confirmed', test: function (s) { return s === 'confirmed'; } },
+  { id: 'cancelled', label: 'Cancelled', test: function (s) { return s === 'cancelled' || s === 'no-show'; } },
+  { id: 'completed', label: 'Completed', test: function (s) { return s === 'completed'; } },
+  { id: 'all', label: 'Everything', test: function () { return true; } }
+];
+
+function filters(books) {
+  $('filters').innerHTML = FILTERS.map(function (f) {
+    var n = books.filter(function (b) { return f.test(stat(b)); }).length;
+    return '<button class="chip' + (S.filter === f.id ? ' on' : '') + '" data-f="' + f.id + '">' + f.label + ' ' + n + '</button>';
+  }).join('');
+  [].forEach.call($('filters').querySelectorAll('.chip'), function (c) {
+    c.onclick = function () { S.filter = c.dataset.f; tables(); };
+  });
+}
+
+function statusCell(b) {
+  var s = stat(b);
+  var opts = STATUSES.map(function (x) {
+    return '<option value="' + x + '"' + (x === s ? ' selected' : '') + '>' + x + '</option>';
+  }).join('');
+  return '<select class="st" data-ref="' + esc(b.ref) + '">' + opts + '</select><span class="sav" data-sav="' + esc(b.ref) + '"></span>';
+}
+
+function wireStatus() {
+  [].forEach.call($('tBook').querySelectorAll('.st'), function (sel) {
+    sel.onchange = function () {
+      var ref = sel.dataset.ref;
+      var note = $('tBook').querySelector('[data-sav="' + ref + '"]');
+      if (note) { note.style.color = '#8f8a83'; note.textContent = 'Saving…'; }
+      post({ action: 'setStatus', ref: ref, status: sel.value }, function (err) {
+        if (note) {
+          note.style.color = err ? '#a3402c' : '#3f6b45';
+          note.textContent = err ? 'Not saved' : 'Saved';
+        }
+        if (err) return;
+        (S.data.bookings || []).forEach(function (b) { if (String(b.ref) === String(ref)) b.status = sel.value; });
+        calendar();
+        filters(S.data.bookings || []);
+        setTimeout(function () { if (note) note.textContent = ''; }, 2200);
+      });
+    };
+  });
+}
+
 function tables() {
   var d = S.data || {};
-  var books = (d.bookings || []).slice().reverse();
+  var all = d.bookings || [];
+  var f = FILTERS.filter(function (x) { return x.id === S.filter; })[0] || FILTERS[0];
+  var books = all.filter(function (b) { return f.test(stat(b)); }).slice().reverse();
+  filters(all);
 
-  table($('tBook'), ['Received', 'Type', 'Name', 'Mobile', 'Vehicle', 'Dates', 'Estimate'], books, function (b) {
+  table($('tBook'), ['Ref', 'Status', 'Received', 'Type', 'Name', 'Mobile', 'Vehicle', 'Dates', 'Estimate'], books, function (b) {
     return [
+      esc(b.ref || ''),
+      statusCell(b),
       esc(String(b.received || '').slice(0, 10)),
       esc(b.kind),
       esc(b.name),
@@ -208,6 +291,7 @@ function tables() {
       money(b.total)
     ];
   });
+  wireStatus();
 
   table($('tCust'), ['Mobile', 'Name', 'First seen', 'Last seen', 'Enquiries'], (d.customers || []).slice().reverse(), function (c) {
     return [
@@ -219,14 +303,40 @@ function tables() {
     ];
   });
 
-  table($('tFleet'), ['Vehicle', 'Status', 'Day rate', 'Deposit'], d.fleet || [], function (r) {
+  table($('tFleet'), ['Vehicle', 'Status', 'Day rate', 'Deposit (with insurance)', 'Deposit (without)', ''], d.fleet || [], function (r) {
     var up = r.available !== false;
+    var fixed = r.deposit != null && r.deposit !== '';
+    var base = fixed ? Number(r.deposit) : depositTier(r.day);
     return [
       esc(r.name || r.id),
       '<span style="color:' + (up ? '#3f6b45' : '#a3402c') + '">' + (up ? 'Available' : 'Out on rental') + '</span>',
       money(r.day),
-      money(r.deposit)
+      money(base) + (fixed ? ' <span style="color:#9a948c">fixed</span>' : ''),
+      fixed ? '<span style="color:#9a948c">same</span>' : money(Math.round(base * 1.5 / 500) * 500),
+      '<button class="tog" data-id="' + esc(r.id) + '" data-av="' + (up ? '1' : '0') + '">' +
+        (up ? 'Mark out' : 'Mark available') + '</button><span class="sav" data-fsav="' + esc(r.id) + '"></span>'
     ];
+  });
+  wireFleet();
+}
+
+function wireFleet() {
+  [].forEach.call($('tFleet').querySelectorAll('.tog'), function (btn) {
+    btn.onclick = function () {
+      var id = btn.dataset.id, next = btn.dataset.av !== '1';
+      var note = $('tFleet').querySelector('[data-fsav="' + id + '"]');
+      btn.disabled = true;
+      if (note) { note.style.color = '#8f8a83'; note.textContent = 'Saving…'; }
+      post({ action: 'setAvailable', id: id, available: next }, function (err) {
+        btn.disabled = false;
+        if (err) {
+          if (note) { note.style.color = '#a3402c'; note.textContent = 'Not saved'; }
+          return;
+        }
+        (S.data.fleet || []).forEach(function (r) { if (String(r.id) === String(id)) r.available = next; });
+        tables();
+      });
+    };
   });
 }
 </script>
