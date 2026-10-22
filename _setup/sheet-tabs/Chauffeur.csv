@@ -1,0 +1,7 @@
+id,cls,base,km,min,hr,day
+c200,Executive sedan,190,16,500,100,2450
+3ser,Executive sedan,190,16,500,100,2450
+x3,Executive SUV,220,18,550,100,3100
+e220,Luxury sedan,250,20,600,100,4000
+vclass,Luxury van,300,27,750,100,7300
+7ser,First class sedan,400,34,950,100,8800
